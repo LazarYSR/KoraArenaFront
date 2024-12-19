@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire de Connexion</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #007bff; /* Arrière-plan bleu */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            background: white;
+            padding: 40px; /* Augmentation du padding */
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            width: 400px; /* Augmentation de la largeur */
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-container h1 {
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 1.8rem; /* Taille de police augmentée */
+            animation: fadeIn 1s ease;
+        }
+
+        .form-control {
+            transition: border 0.3s ease;
+            margin-bottom: 15px;
+            opacity: 0; /* Commencer caché */
+            transform: translateY(20px); /* Glisser de bas */
+            animation: slideIn 0.5s ease forwards;
+        }
+
+        .form-control:focus {
+            border-color: #007bff; /* Changer la couleur au focus */
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+            outline: none;
+        }
+
+        .btn-primary {
+            background: #007bff;
+            border: none;
+            transition: background 0.3s ease;
+            opacity: 0; /* Commencer caché */
+            transform: translateY(20px); /* Glisser de bas */
+            animation: slideIn 0.5s ease forwards;
+        }
+
+        .btn-primary:hover {
+            background: #0056b3; /* Couleur au survol */
+        }
+
+        .forgot-password {
+            display: block;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .forgot-password:hover {
+            color: #0056b3; /* Couleur au survol */
+        }
+        .card-header.user { background-color: #007bff; } /* Blue for User */
+        .icon-center {
+      font-size: 80px; /* Adjust the size as needed */
+      text-align: center;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    /* Specific Colors for Icons */
+    .icon-player {
+      color: #007bff; /* Blue for Player Icon */
+    }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <div class="text-center">
+            <i class="fas fa-futbol icon-center icon-player"></i> <!-- Player Icon -->
+          </div>
+        <form [formGroup]="loginform" (ngSubmit)="onSubmit()">
+            <input type="text" class="form-control" formControlName="login" placeholder="Login" >
+            <input type="text" class="form-control" formControlName="password" placeholder="Mot de passe" >
+            <div *ngIf="loginform.get('password')?.invalid && loginform.get('password')?.touched" class="alert alert-danger">
+                les champs sont invalid
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Se connecter</button>
+            <a  class="forgot-password">Mot de passe oublié ?</a>
+        </form>
+    </div>
+
+</body>
+</html>

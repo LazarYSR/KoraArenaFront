@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Role Cards</title>
+  <style>
+    /* Custom Card Styling */
+    .card {
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    /* Card Header Styling */
+    .card-header {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .card-header.user { background-color: #007bff; } /* Blue for User */
+    .card-header.admin { background-color: #28a745; } /* Green for Admin */
+    .card-header.responsable { background-color: #ff8800; } /* Orange for Responsable */
+
+    /* Centered Icon Styling */
+    .icon-center {
+      font-size: 80px; /* Adjust the size as needed */
+      text-align: center;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    /* Specific Colors for Icons */
+    .icon-player {
+      color: #007bff; /* Blue for Player Icon */
+    }
+    
+    .icon-admin {
+      color: #28a745; /* Green for Admin Icon */
+    }
+
+    /* Button Styling */
+    .btn-role {
+      border-radius: 20px;
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+    .card{
+        cursor:pointer ;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container mt-5">
+    <div class="row">
+
+      <!-- User Card -->
+      <div class="col-md-4 mb-4">
+        <div class="card" (click)="goToUser()">
+          <div class="card-header user">User</div>
+          <div class="text-center">
+            <i class="fas fa-futbol icon-center icon-player"></i> <!-- Player Icon -->
+          </div>
+          <div class="card-body text-center">
+            <p class="card-text">Access to basic features and can view personal information.</p>
+            <a  class="btn btn-primary btn-role">View Profile</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Admin Card -->
+      <div class="col-md-4 mb-4">
+        <div class="card "(click)="goToAdmin()">
+          <div class="card-header admin">Admin</div>
+          <div class="text-center">
+            <i class="fas fa-user-shield icon-center icon-admin"></i> <!-- Admin Icon -->
+          </div>
+          <div class="card-body text-center">
+            <p class="card-text">Full access to the system and control over all resources.</p>
+            <a  class="btn btn-success btn-role">Admin Dashboard</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Responsable Card -->
+      <div class="col-md-4 mb-4">
+        <div class="card" (click)="goToResponsable()">
+          <div class="card-header responsable">Responsable</div>
+          <div class="text-center">
+            <i class="fas fa-user-tie icon-center" style="color: #ff8800;"></i> <!-- Responsable Icon -->
+          </div>
+          <div class="card-body text-center">
+            <p class="card-text">Responsible for managing specific fields or resources.</p>
+            <a  class="btn btn-warning btn-role">Manage Resources</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
